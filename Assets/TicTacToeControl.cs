@@ -41,17 +41,37 @@ public class TicTacToeControl : MonoBehaviour
 
 	public void DrawOpening ()
 	{
-		Rect groupRect = new Rect((Screen.width / 2) - (titleImage.width / 2), (Screen.height / 2) - ((titleImage.height + 75) / 2), titleImage.width, titleImage.height + 75);
-		GUI.BeginGroup(groupRect);
-	
-		Rect titleRect = new Rect(0, 0, titleImage.width, titleImage.height);
-		GUI.DrawTexture(titleRect, titleImage);
+
+
+		if(titleImage.width < Screen.width) {
+			
+			Rect groupRect = new Rect((Screen.width / 2) - (titleImage.width / 2), (Screen.height / 2) - ((titleImage.height + 75) / 2), titleImage.width, titleImage.height + 75);
+			
+			GUI.BeginGroup(groupRect);
+			
+			Rect titleRect = new Rect(0, 0, titleImage.width , titleImage.height);		
+			
+			GUI.DrawTexture(titleRect, titleImage);
 			Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height, titleRect.width, 75);
 			if(GUI.Button(multiRect, "New Game")) {
 				NewGame();
 				gameState = GameState.MultiPlayer;
 			}
-
+		}
+		else {
+			Rect groupRect = new Rect((titleImage.width / 2) - (Screen.width / 2), (Screen.height / 2) - ((titleImage.height + 75) / 2), Screen.width  , titleImage.height + 75);
+			GUI.BeginGroup(groupRect);
+			
+			Rect titleRect = new Rect(0, 0, Screen.width-(titleImage.width - Screen.width ), titleImage.height);		
+			
+			GUI.DrawTexture(titleRect, titleImage);
+			Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height, titleRect.width, 75);
+			if(GUI.Button(multiRect, "New Game")) {
+				NewGame();
+				gameState = GameState.MultiPlayer;
+			}
+		}
+		
 		GUI.EndGroup();
 	}
 
@@ -67,7 +87,7 @@ public class TicTacToeControl : MonoBehaviour
 			for(int x = 0; x < 3; x++) {
 				int boardIndex = (y * 3) + x;
 				Rect square = new Rect (x*width, y*height, width, height);
-				string owner = board[boardIndex] == SquareState.XControl ? "X" : board [boardIndex] == SquareState.OControl ? "O" : "";
+				string owner = board[boardIndex] == SquareState.XControl ? "X" : board[boardIndex] == SquareState.OControl ? "O" : "";
 		
 				if(board[boardIndex] == SquareState.Clear) {
 					if(GUI.Button(square, owner))
@@ -92,7 +112,7 @@ public class TicTacToeControl : MonoBehaviour
 	
 	public void DrawGameOver ()
 	{
-		Rect groupRect = new Rect((Screen.width / 2) - 150, (Screen.height / 2) - 75, 300, 150);
+		Rect groupRect = new Rect((Screen.width / 2) - 125, (Screen.height / 2) - 75, 250, 150);
 		GUI.BeginGroup(groupRect);
 
 		Rect winnerRect = new Rect (0, 0, groupRect.width, groupRect.height / 2);
