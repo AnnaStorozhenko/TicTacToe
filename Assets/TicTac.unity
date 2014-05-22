@@ -98,7 +98,7 @@ GUITexture:
   m_GameObject: {fileID: 259292938}
   m_Enabled: 1
   m_Texture: {fileID: 2800000, guid: 846fd7bb2496aed47be9a9f3b1281359, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_Color: {r: .768627465, g: .564705908, b: .521568656, a: .5}
   m_PixelInset:
     serializedVersion: 2
     x: -64
@@ -169,7 +169,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: .156862751, g: .235294119, b: .509803951, a: .0196078438}
+  m_BackGroundColor: {r: .192156866, g: .137254909, b: .360784322, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -212,7 +212,7 @@ GameObject:
   - 92: {fileID: 788602361}
   - 124: {fileID: 788602360}
   - 81: {fileID: 788602359}
-  - 114: {fileID: 788602365}
+  - 114: {fileID: 788602364}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -281,7 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!114 &788602365
+--- !u!114 &788602364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -292,9 +292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d1c96b7b64cda4c9b70534140e4044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guiSkin: {fileID: 11400000, guid: bd757575bd7bd1d47a8b9114324bb921, type: 2}
+  titleImage: {fileID: 2800000, guid: 846fd7bb2496aed47be9a9f3b1281359, type: 3}
   gameState: 0
   winner: 0
   board: 000000000000000000000000000000000000000000000000000000000000000000000000
   xTurn: 1
-  guiSkin: {fileID: 11400000, guid: bd757575bd7bd1d47a8b9114324bb921, type: 2}
-  titleImage: {fileID: 2800000, guid: 846fd7bb2496aed47be9a9f3b1281359, type: 3}
