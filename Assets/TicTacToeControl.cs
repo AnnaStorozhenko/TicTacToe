@@ -11,6 +11,8 @@ public class TicTacToeControl : MonoBehaviour
 	public SquareState[] board = new SquareState[9];
 	public bool xTurn = true;
 
+	//int smaller = Screen.width == GetBigger(Screen.width , titleImage.width) ? titleImage.width : Screen.width;
+
 
 
 	public void NewGame ()
@@ -32,61 +34,70 @@ public class TicTacToeControl : MonoBehaviour
 		case GameState.MultiPlayer:
 			DrawGameBoard();
 			break;
+		case GameState.SinglePlayer:
+			DrawGameSinglePlayer();
+			break;
 		case GameState.GameOver:
 			DrawGameOver();
 			break;
 		}
 	}
 
+	public int GetBigger(int x, int y) {
+		if(x > y) {
+			return x;
+		}
+		else {
+			return y;
+		}
+
+	}
+
+	public int GetSmaller(int x, int y) {
+		if(x <= y) {
+			return x;
+		}
+		else {
+			return y;
+		}
+		
+	}
 
 	public void DrawOpening ()
 	{
 
+		Rect groupRect = new Rect((GetBigger(Screen.width , titleImage.width) / 2 - GetSmaller(Screen.width , titleImage.width) / 2), (Screen.height / 2) - ((titleImage.height + 75) / 2), GetSmaller(Screen.width , titleImage.width), titleImage.height + 75);
+		GUI.BeginGroup(groupRect);
+	
+		int width = Screen.width == GetBigger(Screen.width , titleImage.width) ? GetSmaller(Screen.width , titleImage.width) : GetSmaller(Screen.width , titleImage.width) - (GetBigger(Screen.width , titleImage.width) - GetSmaller(Screen.width , titleImage.width));
+		Rect titleRect = new Rect(0, 0, width, titleImage.height);		
 
-		if(titleImage.width < Screen.width) {
-			
-			Rect groupRect = new Rect((Screen.width / 2) - (titleImage.width / 2), (Screen.height / 2) - ((titleImage.height + 75) / 2), titleImage.width, titleImage.height + 75);
-			
-			GUI.BeginGroup(groupRect);
-			
-			Rect titleRect = new Rect(0, 0, titleImage.width , titleImage.height);		
-			
-			GUI.DrawTexture(titleRect, titleImage);
-			Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height, titleRect.width, 75);
-			if(GUI.Button(multiRect, "New Game")) {
-				NewGame();
-				gameState = GameState.MultiPlayer;
-			}
+		GUI.DrawTexture(titleRect, titleImage);
+	    Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height, titleRect.width, 75);
+		if(GUI.Button(multiRect, "MultiPlayer")) {
+			NewGame();
+			gameState = GameState.MultiPlayer;
+	
 		}
-		else {
-			Rect groupRect = new Rect((titleImage.width / 2) - (Screen.width / 2), (Screen.height / 2) - ((titleImage.height + 75) / 2), Screen.width  , titleImage.height + 75);
-			GUI.BeginGroup(groupRect);
+		//if(GUI.Button(multiRect, "SinglePlayer")) {
+		//	NewGame();
+		//	gameState = GameState.SinglePlayer;
 			
-			Rect titleRect = new Rect(0, 0, Screen.width-(titleImage.width - Screen.width ), titleImage.height);		
-			
-			GUI.DrawTexture(titleRect, titleImage);
-			Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height, titleRect.width, 75);
-			if(GUI.Button(multiRect, "New Game")) {
-				NewGame();
-				gameState = GameState.MultiPlayer;
-			}
-		}
-		
+		//}
+
 		GUI.EndGroup();
 	}
 
 
+	public void DrawGameSinglePlayer() {
+	}
+
 	public void DrawGameBoard ()
 	{
-		bool widthSmaller = Screen.width < Screen.height;
-		float smallSide = widthSmaller ? Screen.width : Screen.height;
-		float width = smallSide / 3;
-		float height = width;
-		
 		for(int y = 0; y < 3; y++) {
 			for(int x = 0; x < 3; x++) {
 				int boardIndex = (y * 3) + x;
-				Rect square = new Rect (x*width, y*height, width, height);
+				Rect square = new Rect (x * GetSmaller(Screen.width, Screen.height) / 3, y * GetSmaller(Screen.width, Screen.height) / 3, GetSmaller(Screen.width, Screen.height) / 3, GetSmaller(Screen.width, Screen.height) / 3);
 				string owner = board[boardIndex] == SquareState.XControl ? "X" : board[boardIndex] == SquareState.OControl ? "O" : "";
 		
 				if(board[boardIndex] == SquareState.Clear) {
@@ -96,14 +107,15 @@ public class TicTacToeControl : MonoBehaviour
 				else GUI.Label(square, owner, owner + "Square");
 			}
 		}
+
 		Rect turnRect = new Rect(300, 0, 100, 100);
-		turnRect.x = widthSmaller ? 0 : smallSide;
-		turnRect.y = widthSmaller ? smallSide : 0;
-		turnRect.width = widthSmaller ? Screen.width : Screen.width - Screen.height;
-		turnRect.height = widthSmaller ? Screen.height - Screen.width : Screen.height;
+		turnRect.x = Screen.width == GetSmaller(Screen.width, Screen.height)? 0 : Screen.width;
+		turnRect.y = Screen.width == GetSmaller(Screen.width, Screen.height) ? Screen.width : 0;
+		turnRect.width = Screen.width == GetSmaller(Screen.width, Screen.height) ? Screen.width : Screen.width - Screen.height;
+		turnRect.height = Screen.width == GetSmaller(Screen.width, Screen.height) ? Screen.height - Screen.width : Screen.height;
 		
-		GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
-		turnStyle.fontSize *= (int)((Screen.width + Screen.height - (smallSide * 2)) / 100);
+	    GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+	    turnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height) * 2)) / 100);
 
 		string turnTitle = xTurn ? "X's Turn!" : "O's Turn!";
 		GUI.Label(turnRect, turnTitle, turnStyle);
@@ -112,12 +124,16 @@ public class TicTacToeControl : MonoBehaviour
 	
 	public void DrawGameOver ()
 	{
-		Rect groupRect = new Rect((Screen.width / 2) - 125, (Screen.height / 2) - 75, 250, 150);
+		Rect groupRect = new Rect((Screen.width / 2) - 100, (Screen.height / 2) - 75, 200 , 150);
 		GUI.BeginGroup(groupRect);
 
 		Rect winnerRect = new Rect (0, 0, groupRect.width, groupRect.height / 2);
 		string winnerTitle = winner == SquareState.XControl ? "X Wins!" : winner == SquareState.OControl ? "O Wins!" : "It's a Tie!";
-		GUI.Label (winnerRect, winnerTitle);
+
+		GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+		turnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height) * 2)) / 100);
+
+		GUI.Label (winnerRect, winnerTitle, turnStyle);
 	
 		winnerRect.y += winnerRect.height;
 
@@ -140,7 +156,7 @@ public class TicTacToeControl : MonoBehaviour
 
 	public void LateUpdate ()
 	{
-		if(gameState != GameState.MultiPlayer)
+		if(gameState != GameState.MultiPlayer && gameState != GameState.SinglePlayer )
 			return;
 
 		for(int i = 0; i < 3; i++) {
