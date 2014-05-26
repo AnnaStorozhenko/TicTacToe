@@ -12,7 +12,8 @@ public class TicTacToeControl : MonoBehaviour
 	public bool xTurn = true;
 
 	//int smaller = Screen.width == GetBigger(Screen.width , titleImage.width) ? titleImage.width : Screen.width;
-
+	//GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+	//turnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height) * 2)) / 100);
 
 
 	public void NewGame ()
@@ -35,7 +36,7 @@ public class TicTacToeControl : MonoBehaviour
 			DrawGameBoard();
 			break;
 		case GameState.SinglePlayer:
-			DrawGameSinglePlayer();
+			DrawGameBoard();
 			break;
 		case GameState.GameOver:
 			DrawGameOver();
@@ -73,24 +74,49 @@ public class TicTacToeControl : MonoBehaviour
 		Rect titleRect = new Rect(0, 0, width, titleImage.height);		
 
 		GUI.DrawTexture(titleRect, titleImage);
-	    Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height, titleRect.width, 75);
+	    Rect multiRect = new Rect (titleRect.x, titleRect.y + titleRect.height - 7, titleRect.width, 40);
+		Rect singleRect = new Rect (multiRect.x, multiRect.y + multiRect.height + 5, multiRect.width, 40);
+
+		//GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("button"));
+		//urnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height))*2) / 100);
+	
 		if(GUI.Button(multiRect, "MultiPlayer")) {
 			NewGame();
 			gameState = GameState.MultiPlayer;
 	
 		}
-		//if(GUI.Button(multiRect, "SinglePlayer")) {
-		//	NewGame();
-		//	gameState = GameState.SinglePlayer;
+		if(GUI.Button(singleRect, "SinglePlayer")) {
+			NewGame();
+			gameState = GameState.SinglePlayer;
 			
-		//}
+		}
 
 		GUI.EndGroup();
 	}
 
 
-	public void DrawGameSinglePlayer() {
+	public void RandomShot() {
+		int randomShot;
+		
+		while (IsClear()) {
+			randomShot = Random.Range(0,9);		
+			if (board [randomShot] == SquareState.Clear) {
+				board [randomShot] = SquareState.OControl;
+				return;
+			}						
+		}
 	}
+	
+	public bool IsClear()
+	{
+		for (int i = 0; i < board.Length; i++) {
+			if (board [i] == SquareState.Clear)
+				return true;
+		}
+		return false;
+	}
+
+
 
 	public void DrawGameBoard ()
 	{
@@ -114,10 +140,22 @@ public class TicTacToeControl : MonoBehaviour
 		turnRect.width = Screen.width == GetSmaller(Screen.width, Screen.height) ? Screen.width : Screen.width - Screen.height;
 		turnRect.height = Screen.width == GetSmaller(Screen.width, Screen.height) ? Screen.height - Screen.width : Screen.height;
 		
-	    GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
-	    turnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height) * 2)) / 100);
+	   // GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+	   // turnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height) * 2)) / 100);
 
+		//string turnTitle = xTurn ? "X's Turn!" : "O's Turn!";
+
+		if( gameState == GameState.SinglePlayer) {
+			if(!xTurn) {
+				RandomShot();
+			    xTurn = true;
+			}
+			//GUI.Label(turnRect, turnTitle, turnStyle);
+		}
+		GUIStyle turnStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+		turnStyle.fontSize *= (int)((Screen.width + Screen.height - (GetSmaller(Screen.width, Screen.height) * 2)) / 100);
 		string turnTitle = xTurn ? "X's Turn!" : "O's Turn!";
+
 		GUI.Label(turnRect, turnTitle, turnStyle);
 		
 	}
