@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: a7d4f283aac14fa4cad0bb2835bf57cd
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Arm_Lower
+    100002: Arm_Upper
+    100004: Armature
+    100006: Bone_Arm_Lower
+    100008: Bone_Arm_Upper
+    100010: Bone_Target
+    100012: Joint_Base
+    100014: Joint_Elbow
+    100016: Joint_Wrist
+    100018: //RootNode
+    100020: Target
+    400000: Arm_Lower
+    400002: Arm_Upper
+    400004: Armature
+    400006: Bone_Arm_Lower
+    400008: Bone_Arm_Upper
+    400010: Bone_Target
+    400012: Joint_Base
+    400014: Joint_Elbow
+    400016: Joint_Wrist
+    400018: //RootNode
+    400020: Target
+    4300000: Arm_Upper
+    4300002: Joint_Base
+    4300004: Arm_Lower
+    4300006: Joint_Elbow
+    4300008: Joint_Wrist
+    4300010: Target
+    7400000: Idle_Retract
+    7400002: ArmatureAction
+    7400004: Extend
+    7400006: Retract
+    7400008: Hit_Front
+    7400010: Hit_Back
+    9500000: //RootNode
+    13700000: Arm_Lower
+    13700002: Arm_Upper
+    13700004: Joint_Base
+    13700006: Joint_Elbow
+    13700008: Joint_Wrist
+    13700010: Target
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle_Retract
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Lower
+        weight: 1
+      - path: Arm_Upper
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone_Arm_Upper
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower/Bone_Target
+        weight: 1
+      - path: Joint_Base
+        weight: 1
+      - path: Joint_Elbow
+        weight: 1
+      - path: Joint_Wrist
+        weight: 1
+      - path: Target
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: ArmatureAction
+      takeName: ArmatureAction
+      firstFrame: 14
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Lower
+        weight: 1
+      - path: Arm_Upper
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone_Arm_Upper
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower/Bone_Target
+        weight: 1
+      - path: Joint_Base
+        weight: 1
+      - path: Joint_Elbow
+        weight: 1
+      - path: Joint_Wrist
+        weight: 1
+      - path: Target
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Extend
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Lower
+        weight: 1
+      - path: Arm_Upper
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone_Arm_Upper
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower/Bone_Target
+        weight: 1
+      - path: Joint_Base
+        weight: 1
+      - path: Joint_Elbow
+        weight: 1
+      - path: Joint_Wrist
+        weight: 1
+      - path: Target
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Retract
+      takeName: Default Take
+      firstFrame: 28
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Lower
+        weight: 1
+      - path: Arm_Upper
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone_Arm_Upper
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower/Bone_Target
+        weight: 1
+      - path: Joint_Base
+        weight: 1
+      - path: Joint_Elbow
+        weight: 1
+      - path: Joint_Wrist
+        weight: 1
+      - path: Target
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Hit_Front
+      takeName: Default Take
+      firstFrame: 57
+      lastFrame: 87
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Lower
+        weight: 1
+      - path: Arm_Upper
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone_Arm_Upper
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower/Bone_Target
+        weight: 1
+      - path: Joint_Base
+        weight: 1
+      - path: Joint_Elbow
+        weight: 1
+      - path: Joint_Wrist
+        weight: 1
+      - path: Target
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Hit_Back
+      takeName: Default Take
+      firstFrame: 98
+      lastFrame: 128
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Arm_Lower
+        weight: 1
+      - path: Arm_Upper
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone_Arm_Upper
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower
+        weight: 1
+      - path: Armature/Bone_Arm_Upper/Bone_Arm_Lower/Bone_Target
+        weight: 1
+      - path: Joint_Base
+        weight: 1
+      - path: Joint_Elbow
+        weight: 1
+      - path: Joint_Wrist
+        weight: 1
+      - path: Target
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Bone_Arm_Upper
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
