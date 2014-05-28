@@ -34,19 +34,23 @@ public class TurretControls : MonoBehaviour {
 	}
 	
 
-   public void RotateTurret(float speed) {
+	public void RotateTurret(float speed) {
+		//calculate how far to rotate
 		Vector3 rotate = Vector3.up * speed * Time.deltaTime;
+		//apply the rotation
 		turretPivot.Rotate(rotate);
 	}
 	
-
+	//rotate the cannon by speed
 	public void RotateCannon(float speed) {
-
+		//determine how far to rotate
 		float rotate = speed * Time.deltaTime;
+		//grab the current rotation
 		Vector3 euler = cannonPivot.localEulerAngles;
+		//clamp the new rotation to be within the limits
 		euler.x = Mathf.Clamp(euler.x - rotate, lowCannonLimit, highCannonLimit);
-		//euler.y = Mathf.Clamp(euler.y - rotate, lowCannonLimit, highCannonLimit);
+		
+		//apply the new rotation
 		cannonPivot.localEulerAngles = euler;
-
 	}
 }

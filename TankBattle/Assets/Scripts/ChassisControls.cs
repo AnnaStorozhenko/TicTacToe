@@ -9,7 +9,6 @@ public class ChassisControls : MonoBehaviour {
 
 	public Renderer rightTread;			 
 	public Renderer leftTread;			
-	public Renderer CenterFountain_Water;
 	private float rightOffset = 0;	
 	private float leftOffset = 0;
 	
@@ -49,10 +48,9 @@ public class ChassisControls : MonoBehaviour {
 		leftOffset += speed * move.y;
 		leftTread.material.mainTextureOffset = new Vector2(leftOffset, 0);
 
-
-		CenterFountain_Water.material.mainTextureOffset = new Vector2(rightOffset, 0);
-
 	}
+
+
 	public void RotateTank(float speed) {
 	
 		Vector3 rotate = Vector3.up * speed * Time.deltaTime;
