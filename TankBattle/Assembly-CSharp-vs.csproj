@@ -48,8 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ChassisControls.cs" />
      <Compile Include="Assets\Scripts\FireControls.cs" />
+     <Compile Include="Assets\Scripts\IndicatorControl.cs" />
      <Compile Include="Assets\Scripts\ScoreCounter.cs" />
      <Compile Include="Assets\Scripts\Target.cs" />
+     <Compile Include="Assets\Scripts\TargetIndicator.cs" />
      <Compile Include="Assets\Scripts\TurretControls.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>

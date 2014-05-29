@@ -52,8 +52,24 @@ public class ChassisControls : MonoBehaviour {
 
 
 	public void RotateTank(float speed) {
+		Vector3 move = characterControl.transform.forward * speed * Time.deltaTime;
+		move.y -= 9.8f * Time.deltaTime;		
 	
 		Vector3 rotate = Vector3.up * speed * Time.deltaTime;
 		characterControl.transform.Rotate(rotate);
+		if(rotateSpeed > 0)
+		{
+			rightOffset += speed * move.y;
+			rightTread.material.mainTextureOffset = new Vector2(rightOffset, 0);
+			leftOffset += speed * move.y;
+			leftTread.material.mainTextureOffset = new Vector2(leftOffset, 0);
+		}
+		else
+		{
+			rightOffset -= speed * move.y;
+			rightTread.material.mainTextureOffset = new Vector2(rightOffset, 0);
+			leftOffset -= speed * move.y;
+			leftTread.material.mainTextureOffset = new Vector2(leftOffset, 0);
+		}
 	}
 }

@@ -1,62 +1,56 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TurretControls : MonoBehaviour {
 
-	public Transform turretPivot;
-	public Transform cannonPivot;
+	public Transform turretPivot;		
+	public Transform cannonPivot;		
 
-	public float turretSpeed = 45f;
-	public float cannonSpeed = 20f;
+	public float turretSpeed = 45f;		
+	public float cannonSpeed = 20f;		
 
-	public float lowCannonLimit = 315f;
+	public float lowCannonLimit = 315f;	
 	public float highCannonLimit = 359.9f;
-	private bool FirstLaunch = false;
+	
 
-	public void OnGUI()
-	{
+	public void OnGUI() {
+
 		Rect up = new Rect(Screen.width - 100, Screen.height - 150, 50, 50);
-		if(GUI.RepeatButton(up, "u"))
-		{
-			RotateCannon(cannonSpeed);
+		if(GUI.RepeatButton(up, "u")) {
+			RotateCannon(cannonSpeed);		
 		}
-
 		Rect down = new Rect(Screen.width - 100, Screen.height - 50, 50, 50);
-		if(GUI.RepeatButton(down, "d"))
-		{
+		if(GUI.RepeatButton(down, "d")) {
 			RotateCannon(-cannonSpeed);
 		}
-
 		Rect left = new Rect(Screen.width - 150, Screen.height - 100, 50, 50);
-		if(GUI.RepeatButton(left, "l"))
-		{
-			RotateTurret(-turretSpeed);
+		if(GUI.RepeatButton(left, "l")) {
+			RotateTurret(-turretSpeed);	
 		}
-
 		Rect right = new Rect(Screen.width - 50, Screen.height - 100, 50, 50);
-		if(GUI.RepeatButton(right, "r"))
-		{
-			RotateTurret(turretSpeed);
+		if(GUI.RepeatButton(right, "r")) {
+			RotateTurret(turretSpeed);		
 		}
 	}
+	
 
-	public void RotateTurret(float speed)
-	{
+	public void RotateTurret(float speed) {
+
 		Vector3 rotate = Vector3.up * speed * Time.deltaTime;
 		turretPivot.Rotate(rotate);
 	}
+	
 
-	public void RotateCannon(float speed)
-	{
-		if(!FirstLaunch)
-		{
-			cannonPivot.localEulerAngles = new Vector3(359.9f,0f,0f);
-			FirstLaunch = true;
-		}
+	public void RotateCannon(float speed) {
+		cannonPivot.localEulerAngles = new Vector3(359.9f, 0f, 0f);
+
 
 		float rotate = speed * Time.deltaTime;
 		Vector3 euler = cannonPivot.localEulerAngles;
+
 		euler.x = Mathf.Clamp(euler.x - rotate, lowCannonLimit, highCannonLimit);
+		
+	
 		cannonPivot.localEulerAngles = euler;
 	}
 }

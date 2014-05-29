@@ -24,6 +24,7 @@ public class Target : MonoBehaviour {
 
 		idleRetractId = Animator.StringToHash("Base Layer.Idle_Retract");
 		idleExtendId = Animator.StringToHash("Base Layer.Idle_Extend");
+		IndicatorControl.CreateSlice(transform);
 	}
 
 
@@ -80,4 +81,5 @@ public class Target : MonoBehaviour {
 			ScoreCounter.score += 10;	
 		}
 	}
+
 }
