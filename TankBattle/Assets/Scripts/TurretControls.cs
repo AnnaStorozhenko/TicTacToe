@@ -11,7 +11,7 @@ public class TurretControls : MonoBehaviour {
 
 	public float lowCannonLimit = 315f;	
 	public float highCannonLimit = 359.9f;
-
+	public bool wasRotated;
 
 	public void OnGUI() {
 
@@ -41,11 +41,15 @@ public class TurretControls : MonoBehaviour {
 
 
 	public void RotateCannon(float speed) {
+
+		if(!wasRotated)		{
+			cannonPivot.localEulerAngles = new Vector3(359.9f,0f,0f);
+			wasRotated = true;
+		}
 		float rotate = speed * Time.deltaTime;
 		Vector3 euler = cannonPivot.localEulerAngles;
-
 		euler.x = Mathf.Clamp(euler.x - rotate, lowCannonLimit, highCannonLimit);
-		
+
 		cannonPivot.localEulerAngles = euler;
 	}
 }
