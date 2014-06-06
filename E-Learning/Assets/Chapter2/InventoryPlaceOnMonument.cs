@@ -4,23 +4,23 @@ using System.Collections;
 public class InventoryPlaceOnMonument : MonoBehaviour {
 
 	public int objectIndex;
-	private InventoryMgr _inventoryMgr;
-	private GameObject _monument;
+	private InventoryMgr inventoryMgr;
+	private GameObject monument;
 	private bool attached;
 
-	// Use this for initialization
 	void Start () {
-		_inventoryMgr = GameObject.Find ("Player").GetComponent<InventoryMgr>();
-		_monument = GameObject.Find("Monument");
+		inventoryMgr = GameObject.Find ("Player").GetComponent<InventoryMgr>();
+		monument = GameObject.Find("Monument");
 		attached = false;
 	}
 
-	// Update is called once per frame
 	void Update () {
-		GameObject go = _inventoryMgr.inventoryObjects[objectIndex].item;
-		if ((_monument) && (attached == false))
+		GameObject go = inventoryMgr.inventoryObjects[objectIndex].item;
+		go.SetActive(true);
+
+		if ((monument) && (attached == false))
 		{
-			_monument.GetComponent<MonumentMgr>().attachObjToMountPoint(go, objectIndex);
+			monument.GetComponent<MonumentMgr>().AttachObjToMountPoint(go, objectIndex);
 			attached = true;
 		}
 

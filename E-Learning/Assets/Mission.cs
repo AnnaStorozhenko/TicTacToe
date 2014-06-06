@@ -19,6 +19,8 @@ public class Mission {
 	public List<MissionToken> tokens;	
 	public int points;
 	public GameObject reward;
+	public bool activated;
+	public bool visible;
 	
 	void Start () {
 	
@@ -33,6 +35,8 @@ public class Mission {
 	{
 		if (reward != null)
 			GameObject.Instantiate(reward);
+		//this.activated = false;
+		//this.visible = false;
 		this.status = missionStatus.MS_Completed;
 	}
 }
