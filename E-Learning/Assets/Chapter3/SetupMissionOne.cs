@@ -28,7 +28,7 @@ public class SetupMissionOne : MonoBehaviour {
 			for (int k = 0; k < n; k++)	{
 				int index = Random.Range (0,flagPrefabs.Count);
 				GameObject flagPrefab = flagPrefabs[index];
-				flagPrefabs.RemoveAt (index);
+				flagPrefabs.RemoveAt(index);
 		        
 				Vector3 flagPos = activeSpawnPoints[k].transform.position;
 				GameObject flagInstance = (GameObject) Instantiate (flagPrefab, flagPos, new Quaternion (0.0f,0.0f, 0.0f, 1.0f));

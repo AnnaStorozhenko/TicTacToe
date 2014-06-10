@@ -16,7 +16,7 @@ public class CustomGameObject : MonoBehaviour {
 		Ruby = 2,
 		Emerald = 3,
 		Diamond = 4,
-		//flag = 5
+		flag = 5
 	};
 	
 	public CustomObjectType objectType;
