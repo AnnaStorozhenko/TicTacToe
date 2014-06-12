@@ -16,7 +16,7 @@ public class MissionMgrHelper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for(int i=0; i<missionMgr.missions.Count; i++) {
+		for(int i=0; i < missionMgr.missions.Count; i++) {
 			Mission m =  missionMgr.missions[i];
 			if(m.displayName == MissionName) {
 				m.activated = setActivated;

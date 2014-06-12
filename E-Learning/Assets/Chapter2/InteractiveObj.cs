@@ -2,12 +2,15 @@ using UnityEngine;
 using System.Collections;
 
 public class InteractiveObj : MonoBehaviour {
-	
+
 	public Vector3 rotAxis;
 	public float rotSpeed;
+	public bool billboard;
+	
 	private CustomGameObject gameObjectInfo;
 	public ObjectInteraction OnCloseEnough;
-
+	private bool activated = true;
+	
 	void Start ()
 	{
 		gameObjectInfo = this.gameObject.GetComponent<CustomGameObject>();
@@ -17,15 +20,30 @@ public class InteractiveObj : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-	    transform.Rotate (rotAxis, rotSpeed * Time.deltaTime);
+		
+		if (billboard == true)
+		{
+			GameObject player = GameObject.Find ("Player1");
+			if (player != null)
+			{
+				this.transform.LookAt (player.transform.position);
+				this.transform.localEulerAngles = new Vector3(0.0f, this.transform.localEulerAngles.y, 0.0f);
+			}
+		}
+		else
+			transform.Rotate (rotAxis, rotSpeed * Time.deltaTime);
 	}	
-
+	
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			if (OnCloseEnough != null)
-				OnCloseEnough.HandleInteraction();
+			if (activated == true)
+			{
+				if (OnCloseEnough != null)
+					OnCloseEnough.HandleInteraction();
+				activated = false;
+			}
 		}
 	}
 }

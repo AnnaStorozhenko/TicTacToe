@@ -1,28 +1,25 @@
 using UnityEngine;
 using System.Collections;
-
+	
 public class InventoryPlaceOnMonument : MonoBehaviour {
 
 	public int objectIndex;
-	private InventoryMgr inventoryMgr;
+	private InventoryMgr InventoryMgr;
 	private GameObject monument;
 	private bool attached;
-
+		
 	void Start () {
-		inventoryMgr = GameObject.Find ("Player").GetComponent<InventoryMgr>();
+		InventoryMgr = GameObject.Find ("Player").GetComponent<InventoryMgr>();
 		monument = GameObject.Find("Monument");
 		attached = false;
-	}
-
+		}
+		
 	void Update () {
-		GameObject go = inventoryMgr.inventoryObjects[objectIndex].item;
-		go.SetActive(true);
-
+		GameObject go = InventoryMgr.inventoryObjects[objectIndex].item;
 		if ((monument) && (attached == false))
 		{
-			monument.GetComponent<MonumentMgr>().AttachObjToMountPoint(go, objectIndex);
+			monument.GetComponent<MonumentMgr>().attachObjToMountPoint(go, objectIndex);
 			attached = true;
 		}
-
-	}
+   }
 }
