@@ -12,26 +12,22 @@ public class GameCam : MonoBehaviour {
 	public float kh;
 	
 	// Use this for initialization
-	void Start ()
-	{
+	void Start () {
 		// cache object references and initialize class variables here
 	}
 	
-	public void LookUp()
-	{
+	public void LookUp() {
 		GameObject go = GameObject.Find ("lookupTarget");
 		if (go)
 			lookObj = go;
 	}
 	
-	public void LookPlayer()
-	{
+	public void LookPlayer() {
 		if (trackObj)
 			lookObj = trackObj;
 	}
 	
-	void updateRotAndTrans()
-	{
+	void updateRotAndTrans() {
 		if (trackObj)
 		{
 			float DesiredRotationAngle = trackObj.transform.eulerAngles.y;
