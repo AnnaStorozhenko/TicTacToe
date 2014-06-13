@@ -9,98 +9,84 @@ public class MissionMgr : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+
 	}
-	
-	public void Add(MissionToken mt)
-	{
+
+
+	public void Add(MissionToken mt) {
+
 		bool uniqueToken = true;
-		if (missionTokens != null)
-		{
-			for (int i = 0; i < missionTokens.Count; i++)
-			{
-				if (missionTokens[i].id == mt.id)
-				{
+		if (missionTokens != null) {
+			for (int i = 0; i < missionTokens.Count; i++) {
+				if (missionTokens[i].id == mt.id) {
 					uniqueToken = false;
 					break;
 				}
 			}
 		}
-		
-		if (uniqueToken)
-		{
+		if (uniqueToken) {
 			missionTokens.Add (mt);
 		}
 	}
-	
-	public bool isMissionComplete(int missionid)
-	{
+
+
+	public bool isMissionComplete(int missionid) {
 		bool rval = false;
-		if (missionid < missions.Count)
-		{
+		if (missionid < missions.Count)	{
 			if (missions[missionid].status == Mission.MissionStatus.MS_Completed)
 				rval = true;
 		}
 		return rval;
 	}
-	
-	public bool Validate(Mission m)
-	{
+
+
+	public bool Validate(Mission m) {
+
 		bool missionComplete = true;
 		
 		if (m.tokens.Count <= 0)
 			missionComplete = false;
 		
-		for (int i = 0; i < m.tokens.Count; i++)
-		{
+		for (int i = 0; i < m.tokens.Count; i++){
 			bool tokenFound = false;
-			for (int j = 0; j < missionTokens.Count; j++)
-			{
-				if (missionTokens[j] != null && (m.tokens[i].id == missionTokens[j].id))
-				{	
+			for (int j = 0; j < missionTokens.Count; j++) {
+				if (missionTokens[j] != null && (m.tokens[i].id == missionTokens[j].id)) {	
 					tokenFound = true;
 					break;
 				}
 			}
 			
-			if (tokenFound == false)
-			{
+			if (tokenFound == false) {
 				missionComplete = false;
 				break;
 			}
 		}
 		
-		if (missionComplete == true)
-		{
+		if (missionComplete == true) {
 			GameObject go = GameObject.Find ("Player");
 			if (go == null)
 				go = GameObject.Find ("Player1");
-			if (go)
-			{
+			if (go)	{
 				PlayerData pd = go.GetComponent<PlayerData>();
-				if (pd)
-				{
+				if (pd)	{
 					pd.AddScore (m.points);
 				}
 			}
 		}
-		
 		return missionComplete;
 	}
-	
+
+
 	void ValidateAll() {
 		
 		for (int i = 0; i < missions.Count; i++)
 		{
 			Mission m = missions[i];
-			
-			if (m.status == Mission.MissionStatus.MS_ForceComplete)
-			{
+			if (m.status == Mission.MissionStatus.MS_ForceComplete) {
 				m.InvokeReward ();
 				m.status = Mission.MissionStatus.MS_Invalid;
 			}
-			
-			if ((m.status != Mission.MissionStatus.MS_Completed) && (m.status != Mission.MissionStatus.MS_Invalid))
-			{
+			if ((m.status != Mission.MissionStatus.MS_Completed) && (m.status != Mission.MissionStatus.MS_Invalid)) {
 				bool missionSuccess = Validate(m);
 				
 				if (missionSuccess == true)
@@ -110,7 +96,8 @@ public class MissionMgr : MonoBehaviour {
 			}
 		}
 	}
-	
+
+
 	void Update () {
 		ValidateAll ();
 	}

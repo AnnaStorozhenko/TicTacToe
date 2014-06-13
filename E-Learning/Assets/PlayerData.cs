@@ -5,23 +5,20 @@ using System.Collections.Generic;
 public class PlayerData : MonoBehaviour {
 	
 	public int score;
-	//public gameMgr.eGameState level;
+    public GameMgr.eGameState level;
 	public List<int> flagChoices; 
 
-	public void AddScore(int dScore)
-	{
+	public void AddScore(int dScore) {
 		score += dScore;
 	}
 	
-	public int GetScore()
-	{
+	public int GetScore() {
 		return score;
 	}
 
-	//public void StoreProgress(gameMgr.eGameState lvl)
-//	{
-	//	level = lvl;
-//	}
+	public void StoreProgress(GameMgr.eGameState lvl) {
+		level = lvl;
+	}
 
 	// Use this for initialization
 	void Start () {
